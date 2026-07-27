@@ -525,6 +525,110 @@ a {
   }
 }
 
+.method {
+  background: #090b0a;
+}
+
+.method__grid {
+  display: grid;
+  margin-top: 3rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.method__step {
+  min-height: 15rem;
+  padding: 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.method__step:last-child { border-bottom: 0; }
+.method__step > span,
+.services__number span {
+  color: var(--color-accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.method__step h3,
+.services__card h3 {
+  margin: 1.25rem 0 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.035em;
+}
+
+.method__step p,
+.services__card > p {
+  margin: 0.85rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.services { background: #080a09; }
+.services__heading .section-heading { max-width: 58rem; }
+.services__grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.services__card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.75rem;
+  background: var(--color-surface);
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.services__card:hover {
+  border-color: rgb(56 217 169 / 32%);
+  transform: translateY(-4px);
+}
+
+.services__number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.services__number span { color: #68706b; }
+.services__number svg {
+  width: 1rem;
+  color: #68706b;
+}
+
+.services__card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services__card li {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.65rem;
+  color: #858c87;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 48rem) {
+  .method__grid,
+  .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .method__step { border-right: 1px solid var(--color-border); }
+  .method__step:nth-child(2n) { border-right: 0; }
+  .method__step:nth-last-child(-n + 2) { border-bottom: 0; }
+  .services__card { padding: 2.25rem; }
+}
+
 @media (min-width: 80rem) {
   .hero {
     min-height: 52rem;
