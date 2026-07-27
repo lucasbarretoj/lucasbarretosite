@@ -1,7 +1,10 @@
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AuthoritySection } from "@/components/sections/AuthoritySection";
 import { DifferentialsSection } from "@/components/sections/DifferentialsSection";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -21,7 +24,10 @@ export default function Home() {
         <DifferentialsSection />
         <ResultsSection />
         <ProcessSection />
+        <FAQSection />
+        <FinalCTASection />
       </main>
+      <Footer />
     </>
   );
 }

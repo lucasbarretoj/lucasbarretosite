@@ -7,5 +7,6 @@
 - Links oficiais de Instagram, YouTube, LinkedIn e site da Ascende.
 - Domínio canônico do projeto.
 - Confirmação formal das métricas e cases exibidos na referência.
-- Respostas completas do FAQ, não legíveis nas capturas fechadas.
+- Respostas completas do FAQ, encapsuladas e não recuperáveis com segurança da
+  captura SingleFile. A Sprint 05 mantém pendências explícitas no accordion.
 - Confirmação dos dados legais e do texto de privacidade do formulário.
