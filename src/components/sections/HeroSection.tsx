@@ -6,12 +6,13 @@ import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { heroContent } from "@/data/hero";
+import { motionTokens } from "@/lib/animations";
 
-const transition = { duration: 0.7, ease: [0.22, 1, 0.36, 1] } as const;
+const transition = { duration: motionTokens.duration.slow, ease: motionTokens.ease };
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
-  const initial = reduceMotion ? false : { y: 22 };
+  const initial = reduceMotion ? false : { y: motionTokens.distance.reveal };
 
   return (
     <section className="hero" id="inicio" aria-labelledby="hero-title">

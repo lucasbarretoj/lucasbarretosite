@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingContact } from "@/components/layout/FloatingContact";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AuthoritySection } from "@/components/sections/AuthoritySection";
 import { DifferentialsSection } from "@/components/sections/DifferentialsSection";
@@ -28,6 +29,7 @@ export default function Home() {
         <FinalCTASection />
       </main>
       <Footer />
+      <FloatingContact />
     </>
   );
 }
