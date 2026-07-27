@@ -15,8 +15,9 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 export default function Home() {
   return (
     <>
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <Header />
-      <main>
+      <main id="conteudo">
         <HeroSection />
         <AboutSection />
         <AuthoritySection />

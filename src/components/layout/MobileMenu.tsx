@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, MessageCircle, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { navigation } from "@/data/navigation";
@@ -12,6 +12,8 @@ type MobileMenuProps = {
 
 export function MobileMenu({ contactHref }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -19,19 +21,23 @@ export function MobileMenu({ contactHref }: MobileMenuProps) {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
     };
+    const trigger = triggerRef.current;
 
     document.addEventListener("keydown", handleEscape);
     document.body.dataset.menuOpen = "true";
+    panelRef.current?.querySelector<HTMLElement>("a")?.focus();
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
       delete document.body.dataset.menuOpen;
+      trigger?.focus();
     };
   }, [isOpen]);
 
   return (
     <div className="mobile-menu">
       <button
+        ref={triggerRef}
         type="button"
         className="mobile-menu__trigger"
         aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
@@ -43,6 +49,7 @@ export function MobileMenu({ contactHref }: MobileMenuProps) {
       </button>
 
       <div
+        ref={panelRef}
         id="mobile-navigation"
         className="mobile-menu__panel"
         data-open={isOpen}
