@@ -50,6 +50,31 @@ a {
   outline-offset: 4px;
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-accent);
+  color: #04110c;
+  font-weight: 700;
+  transform: translateY(-150%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+.not-found {
+  display: grid;
+  min-height: 100svh;
+  place-content: center;
+  justify-items: start;
+  padding: 2rem;
+}
+.not-found h1 { margin: 1rem 0; font-size: clamp(2.5rem, 8vw, 5rem); letter-spacing: -0.06em; }
+.not-found > p:not(.eyebrow) { color: var(--color-text-muted); }
+.not-found .button { margin-top: 1.5rem; }
+
 ::selection {
   background: var(--color-accent);
   color: var(--color-background);
