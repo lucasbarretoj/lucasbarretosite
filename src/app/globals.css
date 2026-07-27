@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #080a09;
+  --color-surface: #101311;
+  --color-text: #f4f7f5;
+  --color-text-muted: #8f9692;
+  --color-accent: #38d9a9;
+  --color-border: #242925;
+  --color-feature-start: #4939d9;
+  --color-feature-end: #3d7bf2;
+  --radius-card: 1rem;
+  --container: 72rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-background);
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+.foundation {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.foundation__glow {
+  position: absolute;
+  width: min(48rem, 90vw);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  filter: blur(8rem);
+}
+
+.foundation__content {
+  position: relative;
+  width: min(100%, 42rem);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+  color: var(--color-accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.foundation__content > p:not(.eyebrow) {
+  max-width: 34rem;
+  margin: 2rem auto;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.foundation__content span {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
