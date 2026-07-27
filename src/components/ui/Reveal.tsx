@@ -3,6 +3,8 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
+import { motionTokens } from "@/lib/animations";
+
 type RevealProps = {
   children: ReactNode;
   className?: string;
@@ -15,10 +17,10 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { y: 24 }}
+      initial={reduceMotion ? false : { y: motionTokens.distance.reveal }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: motionTokens.duration.base, delay, ease: motionTokens.ease }}
     >
       {children}
     </motion.div>

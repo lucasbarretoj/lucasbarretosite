@@ -28,6 +28,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 body[data-menu-open="true"] {
@@ -129,6 +130,16 @@ a {
   backdrop-filter: blur(1rem);
 }
 
+.site-header__progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform-origin: 0 50%;
+}
+
 .site-header__inner {
   display: flex;
   height: 5rem;
@@ -213,6 +224,10 @@ a {
   min-height: 100svh;
   overflow: hidden;
   padding-top: 7.5rem;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 .hero__ambient {
@@ -826,6 +841,25 @@ a {
 .site-footer nav a, .site-footer__social p { margin: 0; color: var(--color-text-muted); font-size: 0.75rem; }
 .site-footer__bottom { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 3rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem; color: #4f5652; font-size: 0.6rem; }
 
+.floating-contact {
+  position: fixed;
+  z-index: 40;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0.75rem 2.5rem rgb(56 217 169 / 28%);
+  color: #04110c;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.floating-contact:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 1rem 3rem rgb(56 217 169 / 38%); }
+.floating-contact svg { width: 1.35rem; }
+
 @media (min-width: 48rem) {
   .contact-form { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 2rem; }
   .contact-form__wide { grid-column: 1 / -1; }
@@ -834,6 +868,27 @@ a {
 }
 @media (min-width: 64rem) {
   .faq__grid, .final-cta__grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: start; gap: 6rem; }
+}
+
+@media (max-width: 26.875rem) {
+  .container { width: min(calc(100% - 2rem), var(--container)); }
+  .hero { padding-top: 6.75rem; }
+  .hero h1 { font-size: clamp(2.25rem, 10vw, 2.75rem); }
+  .hero__description { font-size: 0.82rem; }
+  .hero__metrics { gap: 0.4rem; }
+  .hero__metrics dt { font-size: 1rem; }
+  .hero__metrics dd { font-size: 0.5rem; }
+  .button { padding-inline: 0.9rem; font-size: 0.75rem; }
+  .section { padding-block: 5rem; }
+  .results__case, .authority__card, .services__card { padding: 1.35rem; }
+  .results__metrics { gap: 0.4rem; }
+  .results__metrics dt { font-size: 1rem; }
+  .floating-contact { right: 1rem; bottom: 1rem; width: 3rem; height: 3rem; }
+}
+
+@media (min-width: 120rem) {
+  :root { --container: 78rem; }
+  .section { padding-block: 10rem; }
 }
 
 @media (min-width: 80rem) {

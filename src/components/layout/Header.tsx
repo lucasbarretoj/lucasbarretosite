@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/MobileMenu";
@@ -10,6 +11,12 @@ import { navigation } from "@/data/navigation";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 28,
+    mass: 0.25,
+  });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
@@ -40,6 +47,7 @@ export function Header() {
 
         <MobileMenu contactHref={siteConfig.contactHref} />
       </div>
+      <motion.div className="site-header__progress" style={{ scaleX: progress }} />
     </header>
   );
 }
