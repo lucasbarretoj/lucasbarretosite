@@ -1,0 +1,56 @@
+name: Deploy estático na Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hostinger-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  validate-build-deploy:
+    name: Validar, exportar e publicar
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar lint
+        run: npm run lint
+
+      - name: Verificar tipos
+        run: npm run typecheck
+
+      - name: Gerar exportação estática
+        run: npm run build
+
+      # IMPORTANTE: este deploy está restrito à subpasta de Lucas Barreto.
+      # Nunca altere server-dir para public_html/ ou para uma pasta do WordPress.
+      - name: Publicar somente public_html/lucasbarreto
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./out/
+          server-dir: ./
+          dangerous-clean-slate: false
+          log-level: minimal

@@ -1,0 +1,5 @@
+# Configuração exclusiva da aplicação estática em public_html/lucasbarreto/.
+# Não depende nem altera as regras do WordPress na raiz da hospedagem.
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /lucasbarreto/404.html
