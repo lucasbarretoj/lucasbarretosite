@@ -40,6 +40,7 @@ export default function ResumePage() {
                 <a href={resumeContent.contact.emailHref}><Mail aria-hidden="true" />{resumeContent.contact.email}</a>
                 <span><MapPin aria-hidden="true" />{resumeContent.contact.location}</span>
                 <a href={resumeContent.contact.instagramHref} target="_blank" rel="noopener noreferrer">Instagram: {resumeContent.contact.instagram}<ExternalLink aria-hidden="true" /></a>
+                <a href={resumeContent.contact.linkedinHref} target="_blank" rel="noopener noreferrer">LinkedIn: {resumeContent.contact.linkedin}<ExternalLink aria-hidden="true" /></a>
               </address>
               <div className="resume-hero__actions">
                 <a href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer">Contato <ExternalLink aria-hidden="true" /></a>

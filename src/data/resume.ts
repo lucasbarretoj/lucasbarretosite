@@ -6,6 +6,8 @@ export type ResumeContact = {
   location: string;
   instagram: string;
   instagramHref: string;
+  linkedin: string;
+  linkedinHref: string;
 };
 
 export type ResumeExperience = {
@@ -50,6 +52,8 @@ export const resumeContent = {
     location: "Irará, Bahia",
     instagram: "@olucas.barreto",
     instagramHref: "https://www.instagram.com/olucas.barreto/",
+    linkedin: "Lucas Barreto",
+    linkedinHref: "https://www.linkedin.com/in/lucas-barreto-0735b2201/",
   } satisfies ResumeContact,
   summary:
     "Profissional de marketing digital com experiência em estratégia, mídia paga, análise de dados e mensuração. Fundador da Ascende, atua na construção e gestão de operações de aquisição para empresas e negócios digitais, unindo planejamento, campanhas, análise de funil e tecnologia.",
@@ -57,7 +61,7 @@ export const resumeContent = {
     {
       company: "Ascende Marketing Digital",
       role: "Fundador e estrategista de crescimento",
-      period: "2 anos",
+      period: "2024 - hoje",
       responsibilities: [
         "Planejamento e gestão de campanhas de mídia paga",
         "Construção de estratégias de aquisição para empresas e negócios digitais",
@@ -73,7 +77,7 @@ export const resumeContent = {
     {
       company: "Convertix",
       role: "Gestor de tráfego",
-      period: "1 ano e 6 meses",
+      period: "2023 - 2025",
       responsibilities: [
         "Planejamento e gestão de campanhas de mídia paga",
         "Construção de estratégias de aquisição",
@@ -122,7 +126,7 @@ export const resumeContent = {
       name: "Subido PRO",
       type: "Formação",
       institution: "Mentoria Subido PRO",
-      description: "Formação avançada em tráfego pago, primeira turma do programa Subido PRO.",
+      description: "Formação avançada em tráfego pago pelo programa Subido PRO.",
     },
     {
       name: "Meta Ads",
