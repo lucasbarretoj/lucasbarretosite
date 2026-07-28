@@ -10,8 +10,9 @@ import { resumeContent } from "@/data/resume";
 export const metadata: Metadata = {
   title: "Currículo",
   description: "Conheça a experiência profissional, competências, formação e principais áreas de atuação de Lucas de Jesus Barreto.",
-  alternates: { canonical: "/curriculo" },
+  alternates: { canonical: siteConfig.resumeUrl },
   openGraph: {
+    url: siteConfig.resumeUrl,
     title: "Currículo | Lucas de Jesus Barreto",
     description: "Experiência profissional, competências, formação e áreas de atuação de Lucas de Jesus Barreto.",
   },
@@ -30,7 +31,7 @@ export default function ResumePage() {
       <main className="resume-page" id="curriculo-conteudo">
         <div className="container">
           <section className="resume-hero">
-            <Image src="/images/lucas/lucas-barreto-portrait.png" alt="Lucas de Jesus Barreto" width={180} height={180} priority />
+            <Image src={siteConfig.assets.portrait} alt="Lucas de Jesus Barreto" width={180} height={180} priority />
             <div>
               <p className="eyebrow">Currículo digital</p>
               <h1>{resumeContent.name}</h1>

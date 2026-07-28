@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 
+import { siteConfig } from "@/config/site";
+
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
   return {
-    rules: { userAgent: "*", allow: "/" },
-    ...(baseUrl ? { sitemap: `${baseUrl}/sitemap.xml` } : {}),
+    rules: { userAgent: "*", allow: `${siteConfig.basePath}/` },
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

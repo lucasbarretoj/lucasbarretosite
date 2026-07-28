@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope, Space_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { siteConfig } from "@/config/site";
+
 import "./globals.css";
 
 const sans = Manrope({
@@ -16,7 +18,7 @@ const mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(`${siteConfig.url}/`),
   title: {
     default: "Lucas Barreto | Estratégia de crescimento",
     template: "%s | Lucas Barreto",
@@ -33,6 +35,7 @@ export const metadata: Metadata = {
     title: "Lucas Barreto | Estratégia de crescimento",
     description: "Estratégia, mídia paga e dados para negócios que buscam crescer com previsibilidade.",
     siteName: "Lucas Barreto",
+    url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",
@@ -40,6 +43,7 @@ export const metadata: Metadata = {
     description: "Estratégia, mídia paga e dados para negócios que buscam crescer com previsibilidade.",
   },
   robots: { index: true, follow: true },
+  alternates: { canonical: siteConfig.url },
 };
 
 type RootLayoutProps = Readonly<{

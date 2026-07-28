@@ -1,5 +1,8 @@
+import Image from "next/image";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { siteConfig } from "@/config/site";
 import { aboutContent } from "@/data/about";
 
 export function AboutSection() {
@@ -9,7 +12,7 @@ export function AboutSection() {
         <Reveal className="about__portrait">
           <Image
             className="about__portrait-image"
-            src="/images/lucas/lucas-barreto-portrait.png"
+            src={siteConfig.assets.portrait}
             alt="Lucas Barreto"
             fill
             sizes="(min-width: 1024px) 34vw, calc(100vw - 2.5rem)"
@@ -38,4 +41,3 @@ export function AboutSection() {
     </section>
   );
 }
-import Image from "next/image";
