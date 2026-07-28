@@ -90,7 +90,7 @@ export function HeroSection() {
         >
           <Image
             className="hero__portrait-image"
-            src="/images/lucas/lucas-barreto-portrait.png"
+            src={siteConfig.assets.portrait}
             alt="Retrato profissional de Lucas Barreto"
             fill
             priority
