@@ -1,12 +1,16 @@
 # Pendências de conteúdo
 
-- Arquivos originais das fotografias de Lucas Barreto. O Hero da Sprint 01 usa
-  um placeholder identificado até o recebimento do retrato original.
-- Número e link definitivos do WhatsApp.
+- Fotografias adicionais de Lucas Barreto, caso sejam desejados enquadramentos
+  diferentes entre Hero, Sobre e Currículo.
 - URL e destino do formulário de diagnóstico.
-- Links oficiais de Instagram, YouTube, LinkedIn e site da Ascende.
+- URL da Newsletter.
+- LinkedIn, e-mail profissional e site da Ascende.
 - Domínio canônico do projeto.
 - Confirmação formal das métricas e cases exibidos na referência.
-- Respostas completas do FAQ, encapsuladas e não recuperáveis com segurança da
-  captura SingleFile. A Sprint 05 mantém pendências explícitas no accordion.
+- Período de atuação na Ascende.
+- Experiências profissionais anteriores, caso devam constar no currículo.
+- Nomes, instituições e datas de cursos, mentorias e certificações.
+- Nível de inglês.
+- Informações adicionais do currículo, como disponibilidade e localização
+  profissional, caso Lucas deseje publicá-las.
 - Confirmação dos dados legais e do texto de privacidade do formulário.
