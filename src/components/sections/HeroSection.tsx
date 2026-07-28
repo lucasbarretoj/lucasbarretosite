@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
@@ -34,10 +35,11 @@ export function HeroSection() {
             animate={{ y: 0 }}
             transition={{ ...transition, delay: reduceMotion ? 0 : 0.08 }}
           >
-            <span>{heroContent.title.start}</span>
-            <span>{heroContent.title.middle}</span>
-            <span className="hero__accent">{heroContent.title.accent}</span>
-            <span>{heroContent.title.end}</span>
+            {heroContent.title.map((line) => (
+              <span className={line.accent ? "hero__accent" : undefined} key={line.text}>
+                {line.text}
+              </span>
+            ))}
           </motion.h1>
 
           <motion.p
@@ -55,7 +57,7 @@ export function HeroSection() {
             animate={{ y: 0 }}
             transition={{ ...transition, delay: reduceMotion ? 0 : 0.24 }}
           >
-            <Button href={siteConfig.contactHref}>
+            <Button href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer">
               <MessageCircle aria-hidden="true" />
               {heroContent.primaryCta}
             </Button>
@@ -85,13 +87,15 @@ export function HeroSection() {
           initial={reduceMotion ? false : { scale: 0.96 }}
           animate={{ scale: 1 }}
           transition={{ ...transition, delay: reduceMotion ? 0 : 0.18 }}
-          role="img"
-          aria-label="Espaço reservado para o retrato de Lucas Barreto"
         >
-          <div className="hero__portrait-placeholder" aria-hidden="true">
-            <span>LB</span>
-            <small>Foto original pendente</small>
-          </div>
+          <Image
+            className="hero__portrait-image"
+            src="/images/lucas/lucas-barreto-portrait.png"
+            alt="Retrato profissional de Lucas Barreto"
+            fill
+            priority
+            sizes="(min-width: 1024px) 36vw, (min-width: 768px) 80vw, calc(100vw - 2.5rem)"
+          />
           <div className="hero__portrait-label">
             <strong>Lucas Barreto</strong>
             <span>Estrategista de growth</span>

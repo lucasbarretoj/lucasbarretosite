@@ -7,14 +7,13 @@ export function AboutSection() {
     <section className="about section" id="sobre" aria-labelledby="about-title">
       <div className="container about__grid">
         <Reveal className="about__portrait">
-          <div
-            className="about__portrait-placeholder"
-            role="img"
-            aria-label="Espaço reservado para uma fotografia de Lucas Barreto"
-          >
-            <span>LB</span>
-            <small>Foto original pendente</small>
-          </div>
+          <Image
+            className="about__portrait-image"
+            src="/images/lucas/lucas-barreto-portrait.png"
+            alt="Lucas Barreto"
+            fill
+            sizes="(min-width: 1024px) 34vw, calc(100vw - 2.5rem)"
+          />
         </Reveal>
 
         <Reveal className="about__content" delay={0.08}>
@@ -39,3 +38,4 @@ export function AboutSection() {
     </section>
   );
 }
+import Image from "next/image";

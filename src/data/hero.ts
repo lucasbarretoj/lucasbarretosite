@@ -1,19 +1,17 @@
 export const heroContent = {
-  eyebrow: "Marketing & IA · +R$3M em ads",
-  title: {
-    start: "Transformo verba",
-    middle: "em ads em",
-    accent: "crescimento",
-    end: "previsível.",
-  },
+  eyebrow: "Marketing e IA",
+  title: [
+    { text: "Transformo mídia paga", accent: false },
+    { text: "em um sistema de", accent: false },
+    { text: "crescimento mais previsível.", accent: true },
+  ],
   description:
-    "Sou Lucas Barreto, estrategista de marketing digital. Uno mídia paga, análise de dados e tecnologia para fazer empresas crescerem com clareza — sem achismo, com método.",
+    "Sou Lucas Barreto, estrategista de crescimento. Uno estratégia, mídia paga, dados, mensuração e acompanhamento para construir operações de aquisição mais consistentes.",
   primaryCta: "Solicitar diagnóstico gratuito",
   secondaryCta: "Ver como trabalho",
   metrics: [
-    { value: "+R$3M", label: "gerenciados em ads" },
-    { value: "8,67", label: "ROAS em lançamento" },
-    { value: "24 mil", label: "leads gerados" },
+    { value: "+R$ 3 mi", label: "gerenciados em anúncios" },
+    { value: "+30", label: "projetos gerenciados" },
   ],
   specialties: [
     "Mídia Paga",
