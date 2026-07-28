@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,11 +9,11 @@ import { resumeContent } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: "Currículo",
-  description: "Conheça a experiência profissional, competências, formação e principais áreas de atuação de Lucas Barreto.",
+  description: "Conheça a experiência profissional, competências, formação e principais áreas de atuação de Lucas de Jesus Barreto.",
   alternates: { canonical: "/curriculo" },
   openGraph: {
-    title: "Currículo | Lucas Barreto",
-    description: "Experiência profissional, competências, formação e áreas de atuação de Lucas Barreto.",
+    title: "Currículo | Lucas de Jesus Barreto",
+    description: "Experiência profissional, competências, formação e áreas de atuação de Lucas de Jesus Barreto.",
   },
 };
 
@@ -23,20 +23,25 @@ export default function ResumePage() {
       <a className="skip-link" href="#curriculo-conteudo">Pular para o currículo</a>
       <header className="resume-nav">
         <div className="container resume-nav__inner">
-          <Link href="/">Lucas Barreto<span>.</span></Link>
+          <Link href="/">Lucas de Jesus Barreto<span>.</span></Link>
           <Link href="/"><ArrowLeft aria-hidden="true" />Voltar ao site</Link>
         </div>
       </header>
       <main className="resume-page" id="curriculo-conteudo">
         <div className="container">
           <section className="resume-hero">
-            <Image src="/images/lucas/lucas-barreto-portrait.png" alt="Lucas Barreto" width={180} height={180} priority />
+            <Image src="/images/lucas/lucas-barreto-portrait.png" alt="Lucas de Jesus Barreto" width={180} height={180} priority />
             <div>
               <p className="eyebrow">Currículo digital</p>
               <h1>{resumeContent.name}</h1>
               <p>{resumeContent.title}</p>
+              <address className="resume-contact">
+                <a href={resumeContent.contact.phoneHref}><Phone aria-hidden="true" />{resumeContent.contact.phone}</a>
+                <a href={resumeContent.contact.emailHref}><Mail aria-hidden="true" />{resumeContent.contact.email}</a>
+                <span><MapPin aria-hidden="true" />{resumeContent.contact.location}</span>
+                <a href={resumeContent.contact.instagramHref} target="_blank" rel="noopener noreferrer">Instagram: {resumeContent.contact.instagram}<ExternalLink aria-hidden="true" /></a>
+              </address>
               <div className="resume-hero__actions">
-                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram <ExternalLink aria-hidden="true" /></a>
                 <a href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer">Contato <ExternalLink aria-hidden="true" /></a>
                 <PrintResumeButton />
               </div>
@@ -76,14 +81,31 @@ export default function ResumePage() {
             <div><h2 id="competencias-title">Competências profissionais</h2><div className="resume-skills">{resumeContent.skills.map((group) => <article key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div></div>
           </section>
 
+          <section className="resume-section" aria-labelledby="habilidades-title">
+            <p className="resume-section__label">Perfil</p>
+            <div><h2 id="habilidades-title">Habilidades</h2><ul className="resume-tags resume-tags--strengths">{resumeContent.strengths.map((strength) => <li key={strength}>{strength}</li>)}</ul></div>
+          </section>
+
           <section className="resume-section" aria-labelledby="ferramentas-title">
             <p className="resume-section__label">Stack</p>
-            <div><h2 id="ferramentas-title">Ferramentas e plataformas</h2><ul className="resume-tags">{resumeContent.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul></div>
+            <div><h2 id="ferramentas-title">Tecnologias, ferramentas e plataformas</h2><ul className="resume-tags">{resumeContent.technologies.map((technology) => <li key={technology}>{technology}</li>)}</ul></div>
           </section>
 
           <section className="resume-section" aria-labelledby="cursos-title">
             <p className="resume-section__label">Desenvolvimento</p>
-            <div><h2 id="cursos-title">Cursos, mentorias e certificações</h2><p className="resume-copy">Informações em validação. Cursos e mentorias serão adicionados após confirmação de nomes, instituições e datas.</p></div>
+            <div>
+              <h2 id="cursos-title">Cursos, mentorias e certificações</h2>
+              <div className="resume-credentials">
+                {resumeContent.credentials.map((item) => (
+                  <article key={`${item.type}-${item.name}`}>
+                    <span>{item.type}</span>
+                    <h3>{item.name}</h3>
+                    <p>{item.institution}</p>
+                    {"description" in item ? <p>{item.description}</p> : null}
+                  </article>
+                ))}
+              </div>
+            </div>
           </section>
 
           <section className="resume-section" aria-labelledby="idiomas-title">
@@ -92,7 +114,7 @@ export default function ResumePage() {
           </section>
         </div>
       </main>
-      <footer className="resume-footer"><div className="container"><span>Lucas Barreto</span><Link href="/">Voltar à página principal</Link></div></footer>
+      <footer className="resume-footer"><div className="container"><span>Lucas de Jesus Barreto</span><Link href="/">Voltar à página principal</Link></div></footer>
     </>
   );
 }
