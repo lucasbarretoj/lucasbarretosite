@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Lucas Barreto",
+  whatsappNumber: "5575982351266",
   description:
     "Estratégia, mídia paga e dados para negócios que buscam crescer com previsibilidade.",
   contactHref:
