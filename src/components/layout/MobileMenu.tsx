@@ -69,6 +69,8 @@ export function MobileMenu({ contactHref }: MobileMenuProps) {
         </nav>
         <Button
           href={contactHref}
+          target="_blank"
+          rel="noopener noreferrer"
           tabIndex={isOpen ? 0 : -1}
           onClick={() => setIsOpen(false)}
         >

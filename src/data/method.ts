@@ -17,7 +17,7 @@ export const methodContent = {
     {
       title: "Executar com método",
       description:
-        "Campanhas estruturadas, criativos testados e tracking confiável — tudo conectado para não perder nenhuma informação.",
+        "Campanhas estruturadas, criativos testados e tracking confiável. Tudo conectado para não perder nenhuma informação.",
     },
     {
       title: "Otimizar sem parar",

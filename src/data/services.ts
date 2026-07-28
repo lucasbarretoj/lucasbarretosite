@@ -7,7 +7,7 @@ export const servicesContent = {
     {
       title: "Estratégia de Crescimento",
       description:
-        "Diagnóstico completo, definição de metas e um plano de aquisição desenhado para o seu momento de negócio — não modelos genéricos.",
+        "Diagnóstico completo, definição de metas e um plano de aquisição desenhado para o momento do seu negócio, sem modelos genéricos.",
       tags: ["Planejamento de campanhas", "Metas e projeções", "Posicionamento de oferta"],
     },
     {

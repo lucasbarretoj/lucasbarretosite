@@ -4,6 +4,7 @@ import { ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { FormEvent, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/config/site";
 
 export function FinalCTASection() {
   const [notice, setNotice] = useState("");
@@ -18,13 +19,13 @@ export function FinalCTASection() {
         <div className="final-cta__copy">
           <p className="eyebrow">Diagnóstico estratégico gratuito</p>
           <h2 id="contact-title">O próximo passo é uma conversa.</h2>
-          <p>Preencha ao lado e receba uma análise sem compromisso da sua operação. Você sai com clareza sobre onde estão as maiores oportunidades de crescimento — decida depois se quer avançar.</p>
+          <p>Preencha ao lado e receba uma análise sem compromisso da sua operação. Você sai com clareza sobre onde estão as maiores oportunidades de crescimento e decide depois se quer avançar.</p>
           <ul>
             {["Sem custo e sem compromisso", "Resposta pessoal do Lucas", "Foco em retorno real, não promessas"].map((item) => (
               <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>
             ))}
           </ul>
-          <Button href="#contato" variant="secondary"><MessageCircle aria-hidden="true" />Prefere ir direto ao WhatsApp?</Button>
+          <Button href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer" variant="secondary"><MessageCircle aria-hidden="true" />Prefere ir direto ao WhatsApp?</Button>
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
           <label>Seu nome *<input name="name" autoComplete="name" required placeholder="Como posso te chamar?" /></label>

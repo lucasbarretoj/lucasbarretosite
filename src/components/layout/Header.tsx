@@ -28,7 +28,7 @@ export function Header() {
   return (
     <header className="site-header" data-scrolled={isScrolled}>
       <div className="container site-header__inner">
-        <a className="site-header__brand" href="#inicio" aria-label="Lucas Barreto — início">
+        <a className="site-header__brand" href="#inicio" aria-label="Lucas Barreto, início">
           Lucas Barreto<span>.</span>
         </a>
 
@@ -40,7 +40,7 @@ export function Header() {
           ))}
         </nav>
 
-        <Button className="site-header__cta" href={siteConfig.contactHref}>
+        <Button className="site-header__cta" href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer">
           <MessageCircle aria-hidden="true" />
           Falar comigo
         </Button>
