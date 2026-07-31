@@ -38,8 +38,15 @@ jobs:
       - name: Verificar tipos
         run: npm run typecheck
 
+      - name: Validar endpoint do formulário
+        env:
+          NEXT_PUBLIC_CONTACT_ENDPOINT: ${{ vars.NEXT_PUBLIC_CONTACT_ENDPOINT }}
+        run: test -n "$NEXT_PUBLIC_CONTACT_ENDPOINT"
+
       - name: Gerar exportação estática
         run: npm run build
+        env:
+          NEXT_PUBLIC_CONTACT_ENDPOINT: ${{ vars.NEXT_PUBLIC_CONTACT_ENDPOINT }}
 
       # IMPORTANTE: este deploy está restrito à subpasta de Lucas Barreto.
       # Nunca altere server-dir para public_html/ ou para uma pasta do WordPress.
