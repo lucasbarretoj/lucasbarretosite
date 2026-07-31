@@ -866,7 +866,11 @@ section[id] {
   text-transform: none;
 }
 .contact-form textarea { resize: vertical; }
-.contact-form__notice { grid-column: 1 / -1; margin: 0; color: #e0b965; font-size: 0.72rem; text-align: center; }
+.contact-form button:disabled { cursor: wait; opacity: 0.68; }
+.contact-form__honeypot { position: absolute; overflow: hidden; width: 1px; height: 1px; clip-path: inset(50%); white-space: nowrap; }
+.contact-form__notice { grid-column: 1 / -1; margin: 0; border: 1px solid transparent; border-radius: 0.65rem; padding: 0.75rem; font-size: 0.72rem; line-height: 1.5; text-align: center; }
+.contact-form__notice[data-state="success"] { border-color: rgb(56 217 169 / 28%); background: rgb(56 217 169 / 7%); color: var(--color-accent); }
+.contact-form__notice[data-state="error"] { border-color: rgb(224 185 101 / 30%); background: rgb(224 185 101 / 7%); color: #e0b965; }
 
 .site-footer { border-top: 1px solid var(--color-border); padding: 4rem 0 2rem; background: #080a09; }
 .site-footer__grid { display: grid; gap: 3rem; }
@@ -1127,6 +1131,7 @@ section[id] {
 }
 
 .about__portrait {
+  display: none;
   position: relative;
   min-height: 30rem;
   overflow: hidden;
@@ -1372,6 +1377,8 @@ section[id] {
   .section {
     padding: 8rem 0;
   }
+
+  .about__portrait { display: block; }
 
   .authority__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
