@@ -43,3 +43,20 @@ Consulte:
 
 - `docs/hostinger-deployment.md`
 - `docs/production-checklist.md`
+- `docs/google-apps-script-form.md`
+
+## Formulário de contato
+
+O formulário envia os leads para um Google Apps Script Web App, que grava os
+dados no Google Sheets e envia a notificação por e-mail. Configure no ambiente
+de build:
+
+```env
+NEXT_PUBLIC_CONTACT_ENDPOINT=https://script.google.com/macros/s/SEU_DEPLOYMENT_ID/exec
+```
+
+No deploy automatizado, configure o mesmo nome como GitHub Actions Variable no
+environment `production` antes do próximo merge em `main`.
+
+Consulte `docs/google-apps-script-form.md` para preparar a planilha, configurar
+as Script Properties, publicar o Web App e testar o fluxo completo.

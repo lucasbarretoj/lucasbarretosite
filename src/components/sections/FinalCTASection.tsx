@@ -1,44 +1,70 @@
 "use client";
 
 import { ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
+import { normalizeContactForm, validateContactForm } from "@/lib/contactValidation";
+import { ContactServiceError, submitContact } from "@/services/contactService";
+import type { ContactFormValues } from "@/types/contact";
 
-type ContactFormData = {
-  name: string;
-  contact: string;
-  company: string;
-  instagram: string;
-  challenge: string;
-};
+type SubmissionState = "idle" | "submitting" | "success" | "error";
 
 export function FinalCTASection() {
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
   const [notice, setNotice] = useState("");
+  const noticeRef = useRef<HTMLParagraphElement>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    if (submissionState === "success" || submissionState === "error") noticeRef.current?.focus();
+  }, [submissionState]);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const data: ContactFormData = {
-      name: String(form.get("name") ?? "").trim(),
-      contact: String(form.get("contact") ?? "").trim(),
-      company: String(form.get("company") ?? "").trim(),
-      instagram: String(form.get("instagram") ?? "").trim(),
-      challenge: String(form.get("challenge") ?? "").trim(),
-    };
-    const message = [
-      "Olá Lucas! Vim pela sua página e gostaria de solicitar um diagnóstico estratégico.",
-      `Nome: ${data.name}`,
-      `Contato: ${data.contact}`,
-      data.company ? `Empresa / projeto: ${data.company}` : "",
-      data.instagram ? `Instagram: ${data.instagram}` : "",
-      data.challenge ? `Desafio: ${data.challenge}` : "",
-    ].filter(Boolean).join("\n");
+    if (submissionState === "submitting") return;
 
-    window.open(`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    setNotice("Dados preparados. Continue o envio na conversa do WhatsApp.");
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+    const values = normalizeContactForm({
+      name: String(form.get("name") ?? ""),
+      phone: String(form.get("phone") ?? ""),
+      email: String(form.get("email") ?? ""),
+      company: String(form.get("company") ?? ""),
+      instagram: String(form.get("instagram") ?? ""),
+      message: String(form.get("message") ?? ""),
+      website: String(form.get("website") ?? ""),
+    } satisfies ContactFormValues);
+
+    const validationError = validateContactForm(values);
+    if (validationError) {
+      setNotice(validationError);
+      setSubmissionState("error");
+      return;
+    }
+
+    setNotice("");
+    setSubmissionState("submitting");
+
+    try {
+      await submitContact({
+        ...values,
+        source: window.location.href,
+        submissionId: crypto.randomUUID(),
+      });
+      formElement.reset();
+      setNotice("Recebi seus dados. Em breve entrarei em contato com você.");
+      setSubmissionState("success");
+    } catch (error) {
+      const message = error instanceof ContactServiceError
+        ? error.message
+        : "Não foi possível enviar agora. Tente novamente.";
+      setNotice(message);
+      setSubmissionState("error");
+    }
   }
+
+  const isSubmitting = submissionState === "submitting";
 
   return (
     <section className="final-cta section" id="contato" aria-labelledby="contact-title">
@@ -54,14 +80,22 @@ export function FinalCTASection() {
           </ul>
           <Button href={siteConfig.contactHref} target="_blank" rel="noopener noreferrer" variant="secondary"><MessageCircle aria-hidden="true" />Prefere ir direto ao WhatsApp?</Button>
         </div>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <label>Seu nome *<input name="name" autoComplete="name" required placeholder="Como posso te chamar?" /></label>
-          <label>WhatsApp ou e-mail *<input name="contact" autoComplete="email" inputMode="email" required placeholder="Seu melhor contato" /></label>
-          <label>Empresa / projeto<input name="company" autoComplete="organization" placeholder="Opcional" /></label>
-          <label>Instagram<input name="instagram" autoComplete="url" placeholder="@seuinstagram" aria-describedby="instagram-help" /><small id="instagram-help">Aceita @ ou URL completa do perfil.</small></label>
-          <label className="contact-form__wide">Conte um pouco do seu desafio<textarea name="challenge" rows={5} placeholder="O que você quer resolver ou alcançar?" /></label>
-          <button className="button button--primary contact-form__wide" type="submit">Solicitar meu diagnóstico <ArrowUpRight aria-hidden="true" /></button>
-          {notice ? <p className="contact-form__notice" role="status">{notice}</p> : null}
+        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <label>Seu nome *<input name="name" autoComplete="name" required minLength={2} maxLength={100} placeholder="Como posso te chamar?" /></label>
+          <label>WhatsApp ou telefone *<input name="phone" autoComplete="tel" inputMode="tel" required minLength={8} maxLength={30} placeholder="(75) 99999-9999" /></label>
+          <label>E-mail<input name="email" type="email" autoComplete="email" maxLength={160} placeholder="voce@empresa.com.br" /></label>
+          <label>Empresa / projeto<input name="company" autoComplete="organization" maxLength={120} placeholder="Opcional" /></label>
+          <label>Instagram<input name="instagram" autoComplete="url" maxLength={200} placeholder="@seuinstagram" aria-describedby="instagram-help" /><small id="instagram-help">Aceita @ ou URL completa do perfil.</small></label>
+          <label className="contact-form__wide">Conte seu objetivo *<textarea name="message" rows={5} required minLength={10} maxLength={2000} placeholder="O que você quer resolver ou alcançar?" /></label>
+          <div className="contact-form__honeypot" aria-hidden="true">
+            <label>Não preencha este campo<input name="website" tabIndex={-1} autoComplete="off" /></label>
+          </div>
+          <button className="button button--primary contact-form__wide" type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+            {isSubmitting ? "Enviando..." : "Solicitar meu diagnóstico"} {!isSubmitting ? <ArrowUpRight aria-hidden="true" /> : null}
+          </button>
+          {notice ? (
+            <p ref={noticeRef} className="contact-form__notice" data-state={submissionState} role={submissionState === "error" ? "alert" : "status"} tabIndex={-1}>{notice}</p>
+          ) : null}
         </form>
       </div>
     </section>
