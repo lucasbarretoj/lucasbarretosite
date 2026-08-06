@@ -1,5 +1,7 @@
 # Lucas Barreto Site
 
+Versão atual: **1.1.0**
+
 Landing page pessoal de Lucas Barreto, construída com Next.js, React,
 TypeScript e Tailwind CSS. A aplicação é exportada como site estático e
 publicada de forma independente sob `/lucasbarreto`.
