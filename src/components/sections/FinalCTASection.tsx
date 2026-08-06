@@ -93,6 +93,9 @@ export function FinalCTASection() {
           <button className="button button--primary contact-form__wide" type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
             {isSubmitting ? "Enviando..." : "Solicitar meu diagnóstico"} {!isSubmitting ? <ArrowUpRight aria-hidden="true" /> : null}
           </button>
+          <p className="contact-form__privacy contact-form__wide">
+            Ao enviar, você autoriza o uso dos dados informados exclusivamente para responder ao seu contato. Consulte o <a href={siteConfig.privacyHref}>Aviso de Privacidade</a>.
+          </p>
           {notice ? (
             <p ref={noticeRef} className="contact-form__notice" data-state={submissionState} role={submissionState === "error" ? "alert" : "status"} tabIndex={-1}>{notice}</p>
           ) : null}
