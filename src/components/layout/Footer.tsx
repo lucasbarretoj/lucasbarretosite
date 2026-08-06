@@ -19,8 +19,9 @@ export function Footer() {
           <span>Redes</span>
           <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
-          <p className="site-footer__pending">Newsletter <small>Em breve</small></p>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <Link href={siteConfig.resumeHref}>Currículo</Link>
+          <Link href={siteConfig.privacyHref}>Privacidade</Link>
         </div>
       </div>
       <div className="container site-footer__bottom"><span>© 2026 Lucas Barreto. Todos os direitos reservados.</span><span>Estratégia · Mídia Paga · Dados · IA</span></div>

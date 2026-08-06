@@ -871,6 +871,17 @@ section[id] {
 .contact-form__notice { grid-column: 1 / -1; margin: 0; border: 1px solid transparent; border-radius: 0.65rem; padding: 0.75rem; font-size: 0.72rem; line-height: 1.5; text-align: center; }
 .contact-form__notice[data-state="success"] { border-color: rgb(56 217 169 / 28%); background: rgb(56 217 169 / 7%); color: var(--color-accent); }
 .contact-form__notice[data-state="error"] { border-color: rgb(224 185 101 / 30%); background: rgb(224 185 101 / 7%); color: #e0b965; }
+.contact-form__privacy { margin: -0.25rem 0 0; color: #68716c; font-size: 0.64rem; line-height: 1.55; text-align: center; }
+.contact-form__privacy a { color: #9ca59f; text-decoration: underline; text-underline-offset: 0.2em; }
+
+.privacy-page { min-height: 100vh; padding: 8rem 0 5rem; }
+.privacy-page__content { max-width: 48rem; }
+.privacy-page h1 { max-width: 12ch; margin: 1rem 0 2rem; font-size: clamp(2.8rem, 8vw, 5.5rem); letter-spacing: -0.06em; line-height: 0.95; }
+.privacy-page h2 { margin: 2.5rem 0 0.75rem; font-size: 1.2rem; }
+.privacy-page p, .privacy-page li { color: var(--color-text-muted); font-size: 0.86rem; line-height: 1.8; }
+.privacy-page ul { padding-left: 1.25rem; }
+.privacy-page a { color: var(--color-accent); }
+.privacy-page__back { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2.5rem; }
 
 .site-footer { border-top: 1px solid var(--color-border); padding: 4rem 0 2rem; background: #080a09; }
 .site-footer__grid { display: grid; gap: 3rem; }
@@ -882,8 +893,6 @@ section[id] {
 .site-footer nav a, .site-footer__social p, .site-footer__social a { margin: 0; color: var(--color-text-muted); font-size: 0.75rem; }
 .site-footer__social a { transition: color 180ms ease; }
 .site-footer__social a:hover { color: var(--color-text); }
-.site-footer__pending { display: flex; align-items: center; gap: 0.55rem; }
-.site-footer__pending small { border: 1px solid var(--color-border); border-radius: 999px; padding: 0.2rem 0.4rem; color: #59615c; font-family: var(--font-mono), monospace; font-size: 0.45rem; text-transform: uppercase; }
 .site-footer__bottom { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 3rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem; color: #4f5652; font-size: 0.6rem; }
 
 .floating-contact {
