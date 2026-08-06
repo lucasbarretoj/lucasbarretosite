@@ -10,7 +10,7 @@
 - [ ] Teste estático local sob `/lucasbarreto/`
 - [ ] Landing e currículo revisados em desktop e mobile
 - [ ] Impressão do currículo confirmada em uma página A4
-- [ ] Formulário confirmado abrindo o WhatsApp com os dados
+- [ ] Formulário confirmado gravando o lead e enviando a notificação por e-mail
 - [ ] Canonical, Open Graph, sitemap, robots e manifest revisados
 - [ ] Nenhuma referência a localhost, Vercel, Emergent ou URL temporária
 - [ ] Nenhuma credencial presente no código ou histórico
@@ -34,7 +34,8 @@
 - [ ] `/lucasbarreto/curriculo/` responde corretamente
 - [ ] Assets, fontes, ícones, favicon, CSS e JavaScript carregam
 - [ ] Links internos e externos funcionam
-- [ ] Formulário abre a conversa correta no WhatsApp
+- [ ] Formulário grava o lead, envia a notificação e apresenta o retorno correto
+- [ ] Aviso de Privacidade está acessível pelo formulário e pelo rodapé
 - [ ] Currículo imprime em uma página A4
 - [ ] Metadata e sitemap usam a URL oficial
 - [ ] Raiz do domínio e instalação atual continuam intactas
